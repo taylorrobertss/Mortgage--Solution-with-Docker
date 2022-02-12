@@ -5,6 +5,7 @@ This project is my solution to the Crosskey Trainee Code Test 2022.
 The application reads in from a file called prospects.txt and calculates how much a customer needs to pay each month over a specific 
 period of time.
 
+I have also created a docker image that runs the java application.
 
 ## Requirements
 The given requirement is as follows:
