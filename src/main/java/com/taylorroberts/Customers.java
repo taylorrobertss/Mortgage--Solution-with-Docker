@@ -22,41 +22,35 @@ public class Customers{
 
     }
 
-    public int getYears(){
-        return years;
-    }
-
-    public double getLoanAmount(){
-        return loan;
-    }
-
-    public void setLoanAmount(double loanAmount){
-
-        loan=loanAmount;
-    }
-
-    public void setInterestRate(double interest){
-        interestRate=interest;
-
-    }
-    public double getInterestRate(){
-        return interestRate;
-    }
-
-    
     public String toString() {
-        return customerName + " " + "wants to borrow " + loan +"\u20AC"+ " for a period of " + years + " years and pay " + String.format("%.2f", monthlyMortgage) + "\u20AC" + " each month";
+        return customerName + " " + "wants to borrow " + loan + "€ for a period of " + years + " years and pay " + String.format("%.2f", monthlyMortgage) + "€ each month";
     }
 
-    public void calculateMortgage() {   //E = U[b(1 + b)^p]/[(1 + b)^p - 1]
+    public void calculateMortgage() {   
+    	/*
+    	    E = U[b(1 + b)^p]/[(1 + b)^p - 1]
+    	 	E = Fixed monthly payment
+			b = Interest on a monthly basis
+			U = Total loan
+			p = Number of payments
+
+    	 */
        //interest for a month
        interestRate= (interestRate /100)/12;
-
-       //time in months
-       int time=years*12;
-
-       // E = U[b(1 + b)^p]/[(1 + b)^p - 1]
-       monthlyMortgage = loan * (  (interestRate * Math.pow(1+interestRate, time))
-                             / (Math.pow(1+interestRate, time) - 1) ); 
+       // E = U[b(1 + b)^p]/[(1 + b)^p - 1]   
+       monthlyMortgage = loan * (  (interestRate * getPower())
+               / (getPower() -1) ); 
     }
+    
+    public double  getPower() {
+    	int power=years*12;
+    	double result=1;
+    	double base=1+interestRate;
+    	for(power= years*12; power!=0; power--) {
+    		result=result*base;
+    		
+    	}
+    	return result;
+    }
+    
 }
