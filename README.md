@@ -1,6 +1,4 @@
-# gradle-crosskey-banking-solution
-## About this project
-This project is my solution to the Crosskey Trainee Code Test 2022. 
+
 
 The application reads in from a file called prospects.txt and calculates how much a customer needs to pay each month over a specific 
 period of time.
